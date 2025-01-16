@@ -65,14 +65,14 @@ class SignInScreen extends StatelessWidget {
                   _buildTextField(
                     label: 'E-mail address',
                     hint: 'Email',
-                    icon: Icons.email_outlined,
+                    icon: Icons.email,
                   ),
                   const SizedBox(height: 10),
                   // Password Field
                   _buildTextField(
                     label: 'Password',
                     hint: 'Password',
-                    icon: Icons.lock_outline,
+                    icon: Icons.lock,
                     obscureText: true,
                   ),
                   const SizedBox(height: 10),

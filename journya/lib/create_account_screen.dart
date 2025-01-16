@@ -12,6 +12,8 @@ class CreateAccountScreen extends StatefulWidget {
 
 class _CreateAccountScreenState extends State<CreateAccountScreen> {
   bool isChecked = false; // Checkbox state
+  final double buttonWidth = double.infinity; // Button width
+  final double buttonHeight = 60; // Button height
 
   @override
   Widget build(BuildContext context) {
@@ -51,13 +53,13 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: const Icon(Icons.arrow_back),
+                        icon: const Icon(Icons.arrow_back), // Correct icon
                         color: Colors.black,
                         padding: const EdgeInsets.all(12),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 80),
+                  const SizedBox(height: 60),
                   // Title
                   Text(
                     'Create Account',
@@ -75,7 +77,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     context,
                     label: 'E-mail address',
                     hint: 'Email',
-                    icon: Icons.email_outlined,
+                    icon: Icons.email, // Correct icon
                   ),
                   const SizedBox(height: 20),
                   // Password Field
@@ -83,7 +85,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     context,
                     label: 'Password',
                     hint: 'Password',
-                    icon: Icons.lock_outline,
+                    icon: Icons.lock, // Correct icon
                     obscureText: true,
                   ),
                   const SizedBox(height: 20),
@@ -92,7 +94,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     context,
                     label: 'Confirm Password',
                     hint: 'Password',
-                    icon: Icons.lock_outline,
+                    icon: Icons.lock, // Correct icon
                     obscureText: true,
                   ),
                   const SizedBox(height: 20),
@@ -160,7 +162,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                 text: 'Term of Use',
                                 style: GoogleFonts.poppins(
                                   textStyle: const TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
                                     color: Color(0xFF00BFA6),
                                     decoration: TextDecoration.underline,
                                   ),
@@ -175,14 +178,12 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   const SizedBox(height: 20),
                   // Get Started Button
                   SizedBox(
-                    width: double.infinity,
-                    height: 60,
+                    width: buttonWidth, // Adjustable width
+                    height: buttonHeight, // Adjustable height
                     child: ElevatedButton(
-                      onPressed: isChecked
-                          ? () {
-                              // Handle Get Started
-                            }
-                          : null, // Disable button if not checked
+                      onPressed: () {
+                        // Handle Get Started
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF00BFA6),
                         shape: RoundedRectangleBorder(
@@ -194,7 +195,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                             fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w600,
                             color: Colors.white,
                           ),
                         ),
@@ -219,7 +220,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                             text: 'Sign in',
                             style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
-                                fontSize: 12,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
                                 color: Color(0xFF00BFA6),
                                 decoration: TextDecoration.underline,
                               ),
@@ -279,7 +281,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 color: Colors.black38,
               ),
             ),
-            suffixIcon: Icon(icon, color: Colors.black45),
+            suffixIcon:
+                Icon(icon, color: const Color.fromARGB(255, 151, 151, 151)),
             filled: true,
             fillColor: const Color.fromARGB(119, 255, 255, 255),
             border: OutlineInputBorder(

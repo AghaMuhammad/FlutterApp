@@ -45,7 +45,7 @@ class WelcomeScreen extends StatelessWidget {
                 _buildSignInButton(
                   context,
                   'Sign in with Email',
-                  FontAwesomeIcons.envelope,
+                  Icons.email, // Updated to use Flutter's email icon
                 ),
                 const SizedBox(height: 16), // Reduced space
                 // OR Divider
@@ -176,7 +176,8 @@ class WelcomeScreen extends StatelessWidget {
                     icon, // Google Icon as an image
                     height: 24,
                   )
-                : FaIcon(icon, size: 24, color: Colors.black), // Other Icons
+                : Icon(icon,
+                    size: 26, color: Colors.black), // Updated icon usage
             const SizedBox(width: 20),
             Text(
               text,
