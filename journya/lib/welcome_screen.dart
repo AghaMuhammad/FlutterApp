@@ -25,10 +25,10 @@ class WelcomeScreen extends StatelessWidget {
                 // Enlarged Journya Logo
                 Image.asset(
                   'assets/images/letterJ.png', // Replace with your logo image path
-                  height: 300, // Logo height
-                  width: 300, // Logo width
+                  height: 150, // Logo height
+                  width: 250, // Logo width
                 ),
-                const SizedBox(height: 10), // Reduced space
+                const SizedBox(height: 40), // Reduced space
                 // Sign-in Buttons
                 _buildSignInButton(
                   context,
@@ -61,7 +61,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                     Text(
                       'OR',
-                      style: GoogleFonts.lato(
+                      style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
                           fontSize: 14,
                           color: Colors.black54,
@@ -80,7 +80,7 @@ class WelcomeScreen extends StatelessWidget {
                 const SizedBox(height: 16), // Reduced space
                 // Create Account Button
                 SizedBox(
-                  width: 280, // Same width as white buttons
+                  width: 295, // Same width as white buttons
                   height: 50, // Same height as white buttons
                   child: ElevatedButton(
                     onPressed: () {
@@ -90,7 +90,8 @@ class WelcomeScreen extends StatelessWidget {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal, // Green background
+                      backgroundColor:
+                          const Color(0xFF00BFA6), // Green background
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -100,7 +101,7 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                     child: Text(
                       'Create Account',
-                      style: GoogleFonts.lato(
+                      style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -115,20 +116,19 @@ class WelcomeScreen extends StatelessWidget {
                 Text.rich(
                   TextSpan(
                     text: 'By Signing up, You agree to our ',
-                    style: GoogleFonts.lato(
+                    style: GoogleFonts.poppins(
                       textStyle: const TextStyle(
-                        fontSize: 12,
+                        fontSize: 10,
                         color: Colors.black45,
                       ),
                     ),
                     children: [
                       TextSpan(
                         text: 'Terms and Privacy Policy',
-                        style: GoogleFonts.lato(
+                        style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
-                            fontSize: 12,
-                            color: Colors.teal,
-                            decoration: TextDecoration.underline,
+                            fontSize: 10,
+                            color: Color(0xFF00BFA6),
                           ),
                         ),
                       ),
@@ -147,7 +147,7 @@ class WelcomeScreen extends StatelessWidget {
   // Helper method to create sign-in buttons
   Widget _buildSignInButton(BuildContext context, String text, dynamic icon) {
     return SizedBox(
-      width: 280, // Fixed width
+      width: 295, // Fixed width
       height: 50, // Explicit height for the button
       child: ElevatedButton(
         onPressed: () {
@@ -160,7 +160,8 @@ class WelcomeScreen extends StatelessWidget {
           minimumSize: const Size(280, 50), // Minimum button size
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: const BorderSide(color: Colors.grey), // Add border
+            side: const BorderSide(
+                color: Color.fromARGB(101, 155, 155, 155)), // Add border
           ),
           padding: const EdgeInsets.symmetric(
             vertical: 8,
@@ -169,7 +170,7 @@ class WelcomeScreen extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(width: 30), // Left padding for icon
+            const SizedBox(width: 55), // Left padding for icon
             icon is String
                 ? Image.asset(
                     icon, // Google Icon as an image
@@ -179,7 +180,7 @@ class WelcomeScreen extends StatelessWidget {
             const SizedBox(width: 20),
             Text(
               text,
-              style: GoogleFonts.lato(
+              style: GoogleFonts.poppins(
                 textStyle: const TextStyle(
                   fontSize: 16,
                   color: Colors.black87,

@@ -28,7 +28,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
           // Content
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -57,14 +57,14 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 80),
                   // Title
                   Text(
                     'Create Account',
-                    style: GoogleFonts.lato(
+                    style: GoogleFonts.poppins(
                       textStyle: const TextStyle(
                         fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w600,
                         color: Colors.black,
                       ),
                     ),
@@ -77,7 +77,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     hint: 'Email',
                     icon: Icons.email_outlined,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   // Password Field
                   _buildTextField(
                     context,
@@ -86,7 +86,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     icon: Icons.lock_outline,
                     obscureText: true,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   // Confirm Password Field
                   _buildTextField(
                     context,
@@ -95,16 +95,17 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     icon: Icons.lock_outline,
                     obscureText: true,
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   // Strength Bars
                   _buildStrengthBars(),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 20),
                   // Password Requirements
                   Text(
                     'Use 8 or more characters with a mix of letters, numbers & symbols to be secure.',
-                    style: GoogleFonts.lato(
+                    style: GoogleFonts.poppins(
                       textStyle: const TextStyle(
                         fontSize: 12,
+                        fontWeight: FontWeight.w500,
                         color: Colors.black54,
                       ),
                     ),
@@ -114,31 +115,42 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Checkbox(
-                        value: isChecked,
-                        onChanged: (value) {
-                          setState(() {
-                            isChecked = value!;
-                          });
-                        },
+                      Container(
+                        width: 24,
+                        height: 24,
+                        child: Checkbox(
+                          value: isChecked,
+                          onChanged: (value) {
+                            setState(() {
+                              isChecked = value!;
+                            });
+                          },
+                          activeColor: const Color(0xFF00BFA6),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                        ),
                       ),
+                      const SizedBox(width: 10),
                       Expanded(
                         child: Text.rich(
                           TextSpan(
                             text: 'By proceeding, you agree to our ',
-                            style: GoogleFonts.lato(
+                            style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
-                                fontSize: 12,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
                                 color: Colors.black54,
                               ),
                             ),
                             children: [
                               TextSpan(
                                 text: 'Privacy Policy ',
-                                style: GoogleFonts.lato(
+                                style: GoogleFonts.poppins(
                                   textStyle: const TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.teal,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w400,
+                                    color: Color(0xFF00BFA6),
                                     decoration: TextDecoration.underline,
                                   ),
                                 ),
@@ -146,10 +158,10 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                               const TextSpan(text: 'and '),
                               TextSpan(
                                 text: 'Term of Use',
-                                style: GoogleFonts.lato(
+                                style: GoogleFonts.poppins(
                                   textStyle: const TextStyle(
                                     fontSize: 12,
-                                    color: Colors.teal,
+                                    color: Color(0xFF00BFA6),
                                     decoration: TextDecoration.underline,
                                   ),
                                 ),
@@ -172,14 +184,14 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                             }
                           : null, // Disable button if not checked
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal,
+                        backgroundColor: const Color(0xFF00BFA6),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
                       child: Text(
                         'Get started!',
-                        style: GoogleFonts.lato(
+                        style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -195,19 +207,20 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                     child: Text.rich(
                       TextSpan(
                         text: 'Do you already have an account? ',
-                        style: GoogleFonts.lato(
+                        style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
-                            fontSize: 12,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
                             color: Colors.black54,
                           ),
                         ),
                         children: [
                           TextSpan(
                             text: 'Sign in',
-                            style: GoogleFonts.lato(
+                            style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
                                 fontSize: 12,
-                                color: Colors.teal,
+                                color: Color(0xFF00BFA6),
                                 decoration: TextDecoration.underline,
                               ),
                             ),
@@ -246,10 +259,10 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
       children: [
         Text(
           label,
-          style: GoogleFonts.lato(
+          style: GoogleFonts.poppins(
             textStyle: const TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
               color: Colors.black54,
             ),
           ),
@@ -259,18 +272,23 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
           obscureText: obscureText,
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: GoogleFonts.lato(
+            hintStyle: GoogleFonts.poppins(
               textStyle: const TextStyle(
-                fontSize: 14,
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
                 color: Colors.black38,
               ),
             ),
             suffixIcon: Icon(icon, color: Colors.black45),
             filled: true,
-            fillColor: Colors.white.withOpacity(0.8),
+            fillColor: const Color.fromARGB(119, 255, 255, 255),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(5),
               borderSide: const BorderSide(color: Colors.grey),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: const BorderSide(color: Color(0xFF00BFA6)),
             ),
           ),
         ),
@@ -289,7 +307,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
             height: 5,
             margin: EdgeInsets.only(right: index < 3 ? 4 : 0),
             decoration: BoxDecoration(
-              color: index == 0 ? Colors.teal : Colors.grey.shade300,
+              color:
+                  index == 0 ? const Color(0xFF00BFA6) : Colors.grey.shade300,
               borderRadius: BorderRadius.circular(5),
             ),
           ),

@@ -52,7 +52,7 @@ class SignInScreen extends StatelessWidget {
                   // Title
                   Text(
                     'Welcome Back!',
-                    style: GoogleFonts.lato(
+                    style: GoogleFonts.poppins(
                       textStyle: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -88,7 +88,7 @@ class SignInScreen extends StatelessWidget {
                           ),
                           Text(
                             'Remember me',
-                            style: GoogleFonts.lato(
+                            style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.black54,
@@ -99,7 +99,7 @@ class SignInScreen extends StatelessWidget {
                       ),
                       Text(
                         'Forgot password?',
-                        style: GoogleFonts.lato(
+                        style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                             fontSize: 14,
                             color: Colors.teal,
@@ -126,7 +126,7 @@ class SignInScreen extends StatelessWidget {
                       ),
                       child: Text(
                         'Sign in',
-                        style: GoogleFonts.lato(
+                        style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -156,7 +156,7 @@ class SignInScreen extends StatelessWidget {
                     child: Text.rich(
                       TextSpan(
                         text: 'If you don’t have an account yet? ',
-                        style: GoogleFonts.lato(
+                        style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                             fontSize: 14,
                             color: Colors.black54,
@@ -165,7 +165,7 @@ class SignInScreen extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: 'Sign up',
-                            style: GoogleFonts.lato(
+                            style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
                                 fontSize: 14,
                                 color: Colors.teal,
@@ -198,7 +198,7 @@ class SignInScreen extends StatelessWidget {
       children: [
         Text(
           label,
-          style: GoogleFonts.lato(
+          style: GoogleFonts.poppins(
             textStyle: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,
@@ -211,7 +211,7 @@ class SignInScreen extends StatelessWidget {
           obscureText: obscureText,
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: GoogleFonts.lato(
+            hintStyle: GoogleFonts.poppins(
               textStyle: const TextStyle(
                 fontSize: 14,
                 color: Colors.black38,
@@ -260,7 +260,7 @@ class SignInScreen extends StatelessWidget {
             const SizedBox(width: 20),
             Text(
               text,
-              style: GoogleFonts.lato(
+              style: GoogleFonts.poppins(
                 textStyle: const TextStyle(
                   fontSize: 16,
                   color: Colors.black87,
