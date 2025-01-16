@@ -252,16 +252,16 @@ class SignInScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 8),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center, // Center icon and text
           children: [
-            const SizedBox(width: 20),
             icon is String
                 ? Image.asset(
                     icon,
                     height: 24,
                   )
-                : Icon(icon, size: 36, color: Colors.black),
-            const SizedBox(width: 20),
+                : Icon(icon,
+                    size: 32, color: Colors.black), // Icon size adjusted
+            const SizedBox(width: 8), // Adjust spacing between icon and text
             Text(
               text,
               style: GoogleFonts.poppins(
