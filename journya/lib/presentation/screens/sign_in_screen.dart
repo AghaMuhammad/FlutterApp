@@ -23,7 +23,6 @@ class SignInScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Back Button with Circle
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -82,16 +81,27 @@ class SignInScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Checkbox(
-                            value: false,
-                            onChanged: (value) {},
+                          Theme(
+                            data: ThemeData(
+                              checkboxTheme: CheckboxThemeData(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                                side: const BorderSide(color: Colors.grey),
+                              ),
+                            ),
+                            child: Checkbox(
+                              value: false,
+                              onChanged: (value) {},
+                              activeColor: const Color(0xFF00BFA6),
+                            ),
                           ),
                           Text(
                             'Remember me',
                             style: GoogleFonts.poppins(
                               textStyle: const TextStyle(
                                 fontSize: 14,
-                                color: Colors.black54,
+                                color: Color.fromARGB(255, 0, 0, 0),
                               ),
                             ),
                           ),
@@ -128,7 +138,7 @@ class SignInScreen extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                             fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
                         ),
@@ -158,7 +168,7 @@ class SignInScreen extends StatelessWidget {
                         style: GoogleFonts.poppins(
                           textStyle: const TextStyle(
                             fontSize: 14,
-                            color: Colors.black54,
+                            color: Color.fromARGB(255, 0, 0, 0),
                           ),
                         ),
                         children: [
@@ -185,7 +195,6 @@ class SignInScreen extends StatelessWidget {
     );
   }
 
-  // Helper method to create text fields
   Widget _buildTextField({
     required String label,
     required String hint,
@@ -201,7 +210,7 @@ class SignInScreen extends StatelessWidget {
             textStyle: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w500,
-              color: Colors.black54,
+              color: Color.fromARGB(255, 0, 0, 0),
             ),
           ),
         ),
@@ -218,10 +227,23 @@ class SignInScreen extends StatelessWidget {
             ),
             suffixIcon: Icon(icon, color: Colors.black45),
             filled: true,
-            fillColor: Colors.white.withAlpha((0.5 * 255).toInt()),
+            fillColor: Colors.transparent, // Transparent fill
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(color: Colors.grey),
+              borderSide: const BorderSide(
+                  color: Colors.grey, width: 1), // Increased width
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(
+                  color: Colors.grey, width: 1), // Increased width
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(
+                color: Color(0xFF00BFA6), // Teal border when focused
+                width: 2, // Increased width
+              ),
             ),
           ),
         ),
@@ -229,15 +251,17 @@ class SignInScreen extends StatelessWidget {
     );
   }
 
-  // Helper method to create sign-in buttons
   Widget _buildSignInButton(BuildContext context, String text, dynamic icon) {
     return Container(
       width: double.infinity,
       height: 48,
       decoration: BoxDecoration(
-        color: Colors.white.withAlpha((0.8 * 255).toInt()),
+        color: Colors.transparent,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.grey),
+        border: Border.all(
+          color: Colors.grey.shade400, // Light gray color
+          width: 1.0, // Thinner border
+        ),
       ),
       child: ElevatedButton(
         onPressed: () {
@@ -252,22 +276,25 @@ class SignInScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 8),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center, // Center icon and text
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             icon is String
                 ? Image.asset(
                     icon,
                     height: 24,
                   )
-                : Icon(icon,
-                    size: 32, color: Colors.black), // Icon size adjusted
-            const SizedBox(width: 8), // Adjust spacing between icon and text
+                : Icon(
+                    icon,
+                    size: 24,
+                    color: Colors.black,
+                  ), // Adjusted icon size
+            const SizedBox(width: 8),
             Text(
               text,
               style: GoogleFonts.poppins(
                 textStyle: const TextStyle(
                   fontSize: 16,
-                  color: Colors.black87,
+                  color: Color.fromARGB(255, 0, 0, 0),
                 ),
               ),
             ),

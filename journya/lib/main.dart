@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'welcome_screen.dart';
-import 'create_account_screen.dart'; // Import the CreateAccountScreen file
-import 'sign_in_screen.dart';
+import 'presentation/screens/splash_screen.dart';
+import 'presentation/screens/welcome_screen.dart';
+import 'presentation/screens/create_account_screen.dart';
+import 'presentation/screens/sign_in_screen.dart';
+import 'presentation/screens/onboarding_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp()); // ❌ Remove const
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
       title: 'Journya App',
       initialRoute: '/',
       routes: {
-        '/': (context) => const WelcomeScreen(),
+        '/': (context) => SplashScreen(), // ❌ Remove const
+        '/onboarding': (context) => const OnboardingScreen(),
+        '/welcome': (context) => const WelcomeScreen(),
         '/create-account': (context) => const CreateAccountScreen(),
         '/signin': (context) => const SignInScreen(),
       },

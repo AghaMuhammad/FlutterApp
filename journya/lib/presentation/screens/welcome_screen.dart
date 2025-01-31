@@ -7,6 +7,11 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final double buttonWidth =
+        screenWidth * 0.85; // Adjusted to 85% of screen width
+    final double buttonHeight = 50; // Fixed height for buttons
+
     return Scaffold(
       body: Stack(
         children: [
@@ -34,28 +39,34 @@ class WelcomeScreen extends StatelessWidget {
                   context,
                   'Sign in with Google',
                   'assets/images/google_icon.png',
+                  buttonWidth,
+                  buttonHeight,
                 ),
                 const SizedBox(height: 12), // Reduced space
                 _buildSignInButton(
                   context,
                   'Sign in with Apple',
                   FontAwesomeIcons.apple,
+                  buttonWidth,
+                  buttonHeight,
                 ),
                 const SizedBox(height: 12), // Reduced space
                 _buildSignInButton(
                   context,
                   'Sign in with Email',
                   Icons.email, // Updated to use Flutter's email icon
+                  buttonWidth,
+                  buttonHeight,
                 ),
                 const SizedBox(height: 16), // Reduced space
                 // OR Divider
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Expanded(
+                    Expanded(
                       child: Divider(
                         thickness: 1,
                         color: Colors.grey,
+                        indent: (screenWidth - buttonWidth) / 2,
                         endIndent: 10,
                       ),
                     ),
@@ -64,15 +75,16 @@ class WelcomeScreen extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
                           fontSize: 14,
-                          color: Colors.black54,
+                          color: Color.fromARGB(255, 0, 0, 0),
                         ),
                       ),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Divider(
                         thickness: 1,
                         color: Colors.grey,
                         indent: 10,
+                        endIndent: (screenWidth - buttonWidth) / 2,
                       ),
                     ),
                   ],
@@ -80,8 +92,8 @@ class WelcomeScreen extends StatelessWidget {
                 const SizedBox(height: 16), // Reduced space
                 // Create Account Button
                 SizedBox(
-                  width: 295, // Same width as white buttons
-                  height: 50, // Same height as white buttons
+                  width: buttonWidth, // Same width as white buttons
+                  height: buttonHeight, // Same height as white buttons
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(
@@ -104,7 +116,7 @@ class WelcomeScreen extends StatelessWidget {
                       style: GoogleFonts.poppins(
                         textStyle: const TextStyle(
                           fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w400,
                           color: Colors.white,
                         ),
                       ),
@@ -119,7 +131,7 @@ class WelcomeScreen extends StatelessWidget {
                     style: GoogleFonts.poppins(
                       textStyle: const TextStyle(
                         fontSize: 10,
-                        color: Colors.black45,
+                        color: Color.fromARGB(255, 0, 0, 0),
                       ),
                     ),
                     children: [
@@ -145,19 +157,18 @@ class WelcomeScreen extends StatelessWidget {
   }
 
   // Helper method to create sign-in buttons
-  Widget _buildSignInButton(BuildContext context, String text, dynamic icon) {
+  Widget _buildSignInButton(BuildContext context, String text, dynamic icon,
+      double width, double height) {
     return SizedBox(
-      width: 295, // Fixed width
-      height: 50, // Explicit height for the button
+      width: width, // Responsive width
+      height: height, // Explicit height for the button
       child: ElevatedButton(
         onPressed: () {
           // Handle Sign-In
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor:
-              const Color.fromARGB(0, 255, 255, 255), // Transparent background
+          backgroundColor: Colors.transparent, // Transparent background
           elevation: 0, // Remove shadow
-          minimumSize: const Size(280, 50), // Minimum button size
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
             side: const BorderSide(
@@ -184,7 +195,7 @@ class WelcomeScreen extends StatelessWidget {
               style: GoogleFonts.poppins(
                 textStyle: const TextStyle(
                   fontSize: 16,
-                  color: Colors.black87,
+                  color: Color.fromARGB(255, 0, 0, 0),
                 ),
               ),
             ),

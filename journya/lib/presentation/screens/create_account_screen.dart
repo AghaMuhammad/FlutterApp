@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/gestures.dart'; // Add this import for TapGestureRecognizer
-import 'package:journya/sign_in_screen.dart';
+import 'package:flutter/gestures.dart';
+import 'package:journya/presentation/screens/sign_in_screen.dart';
 
 class CreateAccountScreen extends StatefulWidget {
   const CreateAccountScreen({super.key});
@@ -11,30 +11,31 @@ class CreateAccountScreen extends StatefulWidget {
 }
 
 class _CreateAccountScreenState extends State<CreateAccountScreen> {
-  bool isChecked = false; // Checkbox state
-  final double buttonWidth = double.infinity; // Button width
-  final double buttonHeight = 60; // Button height
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Stack(
         children: [
-          // Background Image
           Positioned.fill(
             child: Image.asset(
               'assets/images/background.png',
               fit: BoxFit.cover,
             ),
           ),
-          // Content
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+              padding: EdgeInsets.symmetric(
+                horizontal: screenWidth * 0.05,
+                vertical: screenHeight * 0.05,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Back Button with Circle
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -53,73 +54,76 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        icon: const Icon(Icons.arrow_back), // Correct icon
+                        icon: const Icon(Icons.arrow_back),
                         color: Colors.black,
                         padding: const EdgeInsets.all(12),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 60),
-                  // Title
+                  SizedBox(height: screenHeight * 0.08),
+
                   Text(
                     'Create Account',
                     style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        fontSize: 24,
+                      textStyle: TextStyle(
+                        fontSize: screenWidth * 0.06,
                         fontWeight: FontWeight.w600,
                         color: Colors.black,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 30),
-                  // Email Field
+                  SizedBox(height: screenHeight * 0.03),
+
                   _buildTextField(
-                    context,
                     label: 'E-mail address',
                     hint: 'Email',
-                    icon: Icons.email, // Correct icon
+                    icon: Icons.email,
                   ),
-                  const SizedBox(height: 20),
-                  // Password Field
+                  SizedBox(height: screenHeight * 0.02),
+
                   _buildTextField(
-                    context,
                     label: 'Password',
                     hint: 'Password',
-                    icon: Icons.lock, // Correct icon
+                    icon: Icons.lock,
                     obscureText: true,
                   ),
-                  const SizedBox(height: 20),
-                  // Confirm Password Field
+                  SizedBox(height: screenHeight * 0.02),
+
                   _buildTextField(
-                    context,
                     label: 'Confirm Password',
                     hint: 'Password',
-                    icon: Icons.lock, // Correct icon
+                    icon: Icons.lock,
                     obscureText: true,
                   ),
-                  const SizedBox(height: 20),
-                  // Strength Bars
+                  SizedBox(height: screenHeight * 0.02),
+
                   _buildStrengthBars(),
-                  const SizedBox(height: 20),
-                  // Password Requirements
-                  Text(
-                    'Use 8 or more characters with a mix of letters, numbers & symbols to be secure.',
-                    style: GoogleFonts.poppins(
-                      textStyle: const TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black54,
+                  SizedBox(height: screenHeight * 0.02),
+
+                  // Aligned to the left
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Use 8 or more characters with a mix of letters,'
+                      ' numbers & symbols to be secure.',
+                      style: GoogleFonts.poppins(
+                        textStyle: TextStyle(
+                          fontSize: screenWidth * 0.03,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black54,
+                        ),
                       ),
+                      textAlign: TextAlign.left,
                     ),
                   ),
-                  const SizedBox(height: 20),
-                  // Terms and Privacy Policy
+                  SizedBox(height: screenHeight * 0.03),
+
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        width: 24,
-                        height: 24,
+                        width: screenWidth * 0.06,
+                        height: screenWidth * 0.06,
                         child: Checkbox(
                           value: isChecked,
                           onChanged: (value) {
@@ -128,31 +132,40 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                             });
                           },
                           activeColor: const Color(0xFF00BFA6),
+                          checkColor: Colors.white,
+                          materialTapTargetSize:
+                              MaterialTapTargetSize.shrinkWrap,
+                          side: MaterialStateBorderSide.resolveWith(
+                            (states) => BorderSide(
+                              color: Colors.grey.shade400,
+                              width: 1.5,
+                            ),
+                          ),
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
+                            borderRadius: BorderRadius.circular(4),
                           ),
                         ),
                       ),
-                      const SizedBox(width: 10),
+                      SizedBox(width: screenWidth * 0.02),
                       Expanded(
                         child: Text.rich(
                           TextSpan(
                             text: 'By proceeding, you agree to our ',
                             style: GoogleFonts.poppins(
-                              textStyle: const TextStyle(
-                                fontSize: 14,
+                              textStyle: TextStyle(
+                                fontSize: screenWidth * 0.035,
                                 fontWeight: FontWeight.w400,
-                                color: Colors.black54,
+                                color: const Color.fromARGB(255, 0, 0, 0),
                               ),
                             ),
                             children: [
                               TextSpan(
                                 text: 'Privacy Policy ',
                                 style: GoogleFonts.poppins(
-                                  textStyle: const TextStyle(
-                                    fontSize: 14,
+                                  textStyle: TextStyle(
+                                    fontSize: screenWidth * 0.035,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xFF00BFA6),
+                                    color: const Color(0xFF00BFA6),
                                     decoration: TextDecoration.underline,
                                   ),
                                 ),
@@ -161,10 +174,10 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                               TextSpan(
                                 text: 'Term of Use',
                                 style: GoogleFonts.poppins(
-                                  textStyle: const TextStyle(
-                                    fontSize: 14,
+                                  textStyle: TextStyle(
+                                    fontSize: screenWidth * 0.035,
                                     fontWeight: FontWeight.w400,
-                                    color: Color(0xFF00BFA6),
+                                    color: const Color(0xFF00BFA6),
                                     decoration: TextDecoration.underline,
                                   ),
                                 ),
@@ -175,15 +188,13 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 20),
-                  // Get Started Button
+                  SizedBox(height: screenHeight * 0.03),
+
                   SizedBox(
-                    width: buttonWidth, // Adjustable width
-                    height: buttonHeight, // Adjustable height
+                    width: screenWidth * 0.9,
+                    height: screenHeight * 0.07,
                     child: ElevatedButton(
-                      onPressed: () {
-                        // Handle Get Started
-                      },
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF00BFA6),
                         shape: RoundedRectangleBorder(
@@ -193,36 +204,36 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                       child: Text(
                         'Get started!',
                         style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
+                          textStyle: TextStyle(
+                            fontSize: screenWidth * 0.045,
+                            fontWeight: FontWeight.w400,
                             color: Colors.white,
                           ),
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: screenHeight * 0.03),
                   // Sign In Text
                   Center(
                     child: Text.rich(
                       TextSpan(
                         text: 'Do you already have an account? ',
                         style: GoogleFonts.poppins(
-                          textStyle: const TextStyle(
-                            fontSize: 14,
+                          textStyle: TextStyle(
+                            fontSize: screenWidth * 0.035,
                             fontWeight: FontWeight.w400,
-                            color: Colors.black54,
+                            color: const Color.fromARGB(255, 0, 0, 0),
                           ),
                         ),
                         children: [
                           TextSpan(
                             text: 'Sign in',
                             style: GoogleFonts.poppins(
-                              textStyle: const TextStyle(
-                                fontSize: 14,
+                              textStyle: TextStyle(
+                                fontSize: screenWidth * 0.035,
                                 fontWeight: FontWeight.w400,
-                                color: Color(0xFF00BFA6),
+                                color: const Color(0xFF00BFA6),
                                 decoration: TextDecoration.underline,
                               ),
                             ),
@@ -231,8 +242,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) =>
-                                        const SignInScreen(), // Replace with your Sign In Screen
+                                    builder: (context) => const SignInScreen(),
                                   ),
                                 );
                               },
@@ -250,12 +260,12 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
     );
   }
 
-  // Helper method to create text fields
-  Widget _buildTextField(BuildContext context,
-      {required String label,
-      required String hint,
-      required IconData icon,
-      bool obscureText = false}) {
+  Widget _buildTextField({
+    required String label,
+    required String hint,
+    required IconData icon,
+    bool obscureText = false,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -265,7 +275,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
             textStyle: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w500,
-              color: Colors.black54,
+              color: Color.fromARGB(255, 0, 0, 0),
             ),
           ),
         ),
@@ -278,20 +288,34 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               textStyle: const TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w400,
-                color: Colors.black38,
+                color: Color.fromARGB(179, 0, 0, 0),
               ),
             ),
-            suffixIcon:
-                Icon(icon, color: const Color.fromARGB(255, 151, 151, 151)),
-            filled: true,
-            fillColor: const Color.fromARGB(119, 255, 255, 255),
+            suffixIcon: Icon(
+              icon,
+              color: const Color.fromARGB(214, 151, 151, 151),
+            ),
+            filled: false, // Transparent background
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5),
-              borderSide: const BorderSide(color: Colors.grey),
+              borderSide: const BorderSide(
+                color: Colors.grey,
+                width: 1, // Increased border width
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(5),
+              borderSide: const BorderSide(
+                color: Colors.grey,
+                width: 1, // Increased border width
+              ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5),
-              borderSide: const BorderSide(color: Color(0xFF00BFA6)),
+              borderSide: const BorderSide(
+                color: Color(0xFF00BFA6), // Teal color when focused
+                width: 1, // Increased border width
+              ),
             ),
           ),
         ),
@@ -299,7 +323,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
     );
   }
 
-  // Helper method to create strength bars
   Widget _buildStrengthBars() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
